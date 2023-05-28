@@ -44,27 +44,30 @@ def ChangeEntry(dictionary):
         dictionary[s][k] = input('Введите новое значение: ')
 
 
-menu = ['1 - Показать записи', '2 - Поиск по записям', '3 - Добавить запись', '4 - Изменить запись', '5 - Удалить запись']
+menu = ['1 - Показать записи', '2 - Поиск по записям', '3 - Добавить запись', '4 - Изменить запись', '5 - Удалить запись', '6 - Выход']
 save = ['Иванов', 'Иван', '89632212342']
 save2 = ['Петров', 'Петр', '89653203947']
 
-print('Меню:')
-for i in menu:
-    print(i)
-user_choice = int(input('Выберите действие: '))
-if user_choice < 1 or user_choice > 4:
-    print('Такой опции нет')
-if user_choice == 1:
-    ShowEntry(dict)
-elif user_choice == 2:
-    EntrySearch(dict)
-elif user_choice == 3:
-    AddEntry(dict)
-elif user_choice == 4:
-    ChangeEntry(dict)
-elif user_choice == 5:
-    DeleteEntry(dict)
-
+setpar = True
+while setpar == True:
+    print('Меню:')
+    for i in menu:
+        print(i)
+    user_choice = int(input('Выберите действие: '))
+    if user_choice < 1 or user_choice > 6:
+        print('Такой опции нет')
+    if user_choice == 1:
+        ShowEntry(dict)
+    elif user_choice == 2:
+        EntrySearch(dict)
+    elif user_choice == 3:
+        AddEntry(dict)
+    elif user_choice == 4:
+        ChangeEntry(dict)
+    elif user_choice == 5:
+        DeleteEntry(dict)
+    elif user_choice == 6:
+        setpar = False
 with open('phonebook.txt', 'w', encoding='utf-8') as file:
     for k in dict:
         file.write(f'{dict[k][0]};{dict[k][1]};{dict[k][2]}\n')
